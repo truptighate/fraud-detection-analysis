@@ -1,57 +1,79 @@
 # Fraud Detection Analysis using SQL & Python
 
 ## Problem Statement
-Fraud detection is challenging because fraudulent transactions are rare (~2.5%) and do not follow obvious patterns.  
-In this project, the goal was to analyze transaction data and identify practical patterns that can help flag suspicious activity without using machine learning.
+Fraud detection is challenging because fraudulent transactions are rare (~2.5%) and patterns are not obvious.  
+This project focuses on identifying behavioral patterns in transaction data to detect high-risk fraud scenarios without using machine learning.
+
+---
 
 ## What I Did
-- Analyzed ~100K transaction records to understand fraud behavior  
-- Explored how transaction **time and amount** impact fraud occurrence  
-- Created new features like transaction **hour** from raw time data  
-- Combined multiple factors to detect high-risk patterns  
+- Analyzed ~100K transaction records  
+- Extracted time-based features from raw data  
+- Studied fraud patterns across time and transaction amount  
+- Built a rule-based fraud risk scoring system  
+
+---
 
 ## Tools Used
 - Python (Pandas, Matplotlib)  
-- SQL (for structured querying and analysis)
+- SQL  
 
-## Key Analysis
-- Compared fraud vs non-fraud transactions  
-- Studied fraud trends across different hours of the day  
-- Analyzed transaction amount distribution across fraud cases  
-- Combined time and amount to uncover hidden patterns  
+---
+
+## Dataset
+- IEEE Fraud Detection Dataset (Kaggle)  
+- Sampled subset used for analysis  
+
+---
+
+## Analysis Performed
+- Fraud vs non-fraud comparison  
+- Time-based fraud pattern analysis  
+- Transaction amount distribution  
+- Combined analysis of time + amount  
+
+---
 
 ## Fraud Detection Approach
-Instead of using ML models, I built a simple **rule-based scoring system**:
+A rule-based scoring system was designed:
 
-- High Risk:
+- **High Risk**
   - Transactions during peak fraud hours (8–9)
   - High transaction amount (>75th percentile)
 
-- Medium Risk:
-  - Transactions during extended risk hours (5–6, 8–9)
+- **Medium Risk**
+  - Transactions during extended fraud hours (5–6, 8–9)
   - Moderate to high transaction amounts
 
-Each transaction was assigned a **risk score** based on these conditions.
+**Risk Score Logic:**
+- High Risk → 2  
+- Medium Risk → 1  
 
-## Key Findings
-- Fraud is not driven by transaction amount alone  
-- Certain time windows (especially 5–9 hours) show higher fraud activity  
-- Combining time and amount gives much stronger signals  
+---
 
-- High-risk transactions showed:
-  - ~13% fraud rate vs ~2.5% baseline (~5x increase)
+## Key Insights
+- Fraud is not dependent on transaction amount alone  
+- Fraud activity varies significantly across time  
+- Combining time and amount gives stronger detection signals  
+- High-risk transactions show ~13% fraud rate vs ~2.5% baseline (~5x increase)  
+
+---
 
 ## Results
 - Low Risk → ~2.5% fraud rate  
 - Medium Risk → ~4.9% fraud rate  
-- High Risk → ~13% fraud rate
+- High Risk → ~13% fraud rate  
 
 ![Risk Score Distribution](images/risk_score_plot.png)
 
+---
+
 ## Business Impact
-- High-risk transactions can be flagged for **manual review or OTP verification**  
-- Monitoring peak fraud hours can improve detection efficiency  
-- Rule-based systems can provide quick, interpretable fraud checks without complex models  
+- High-risk transactions can be flagged for manual review or OTP verification  
+- Monitoring peak fraud hours improves detection efficiency  
+- Rule-based systems provide quick and interpretable fraud detection  
+
+---
 
 ## Conclusion
-This project shows that even without machine learning, strong data analysis and logical rule design can significantly improve fraud detection and provide actionable insights.
+This project demonstrates that strong data analysis and logical rule design can effectively identify fraud patterns without relying on machine learning models.
