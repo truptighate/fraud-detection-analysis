@@ -44,7 +44,9 @@ Each transaction was assigned a **risk score** based on these conditions.
 ## Results
 - Low Risk → ~2.5% fraud rate  
 - Medium Risk → ~4.9% fraud rate  
-- High Risk → ~13% fraud rate  
+- High Risk → ~13% fraud rate
+
+![Risk Score Distribution](images/risk_score_plot.png)
 
 ## Business Impact
 - High-risk transactions can be flagged for **manual review or OTP verification**  
