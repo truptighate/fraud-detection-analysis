@@ -1,79 +1,125 @@
-# Fraud Detection Analysis using SQL & Python
+# Fraud Detection Analysis & Risk Scoring Dashboard
 
-## Problem Statement
-Fraud detection is challenging because fraudulent transactions are rare (~2.5%) and patterns are not obvious.  
-This project focuses on identifying behavioral patterns in transaction data to detect high-risk fraud scenarios without using machine learning.
-
----
-
-## What I Did
-- Analyzed ~100K transaction records  
-- Extracted time-based features from raw data  
-- Studied fraud patterns across time and transaction amount  
-- Built a rule-based fraud risk scoring system  
+## 📌 Problem Statement
+Fraud detection is challenging due to highly imbalanced data and evolving transaction patterns.  
+The goal of this project is to analyze transaction data, identify fraud patterns, and design an interpretable risk scoring system to flag high-risk transactions.
 
 ---
 
-## Tools Used
-- Python (Pandas, Matplotlib)  
-- SQL  
+## 🎯 Objectives
+- Identify when and where fraud occurs  
+- Analyze transaction behavior patterns  
+- Develop a rule-based fraud risk scoring system  
+- Build an interactive dashboard for decision-making  
 
 ---
 
-## Dataset
-- IEEE Fraud Detection Dataset (Kaggle)  
-- Sampled subset used for analysis  
+## 🛠️ Tools & Technologies
+- **Python** (Pandas, Matplotlib, Seaborn)  
+- **SQL** (Analytical queries for pattern extraction)  
+- **Power BI** (Interactive dashboard)  
 
 ---
 
-## Analysis Performed
-- Fraud vs non-fraud comparison  
-- Time-based fraud pattern analysis  
-- Transaction amount distribution  
-- Combined analysis of time + amount  
+## 📂 Project Structure
+fraud-detection-analysis/
+│
+├── data/
+│ └── fraud_analysis_final.csv
+│
+├── notebooks/
+│ └── fraud_analysis.ipynb
+│
+├── sql/
+│ └── analysis_queries.sql
+│
+├── dashboard/
+│ └── fraud_dashboard.pbix
+│
+├── images/
+│ └── dashboard.png
+│
+└── README.md
 
 ---
 
-## Fraud Detection Approach
-A rule-based scoring system was designed:
+## 🔍 Analysis Overview
+The analysis was performed across multiple dimensions:
 
+### ⏱️ Time-Based Analysis
+- Fraud is not uniformly distributed across time  
+- Specific hours show significantly higher fraud rates  
+
+### 💰 Transaction Amount Analysis
+- Fraud occurs across a wide range of amounts  
+- High-value transactions alone are not sufficient indicators  
+
+### 🏷️ Transaction Type Analysis
+- Certain transaction categories exhibit higher fraud rates  
+- Helps prioritize monitoring of specific transaction types  
+
+### 👤 User Behavior Analysis
+- Fraud is concentrated among specific users  
+- Repeated fraudulent behavior is a strong indicator  
+
+### ⚡ Transaction Velocity
+- Rapid consecutive transactions slightly increase fraud probability  
+- Acts as a supporting signal  
+
+---
+
+## ⚙️ Fraud Risk Scoring System
+
+A rule-based risk scoring system was developed using multiple signals:
+
+- High transaction amount  
+- Suspicious time window  
+- High transaction frequency  
+- Rapid transactions  
+
+### Risk Categories:
 - **High Risk**
-  - Transactions during peak fraud hours (8–9)
-  - High transaction amount (>75th percentile)
-
 - **Medium Risk**
-  - Transactions during extended fraud hours (5–6, 8–9)
-  - Moderate to high transaction amounts
+- **Low Risk**
 
-**Risk Score Logic:**
-- High Risk → 2  
-- Medium Risk → 1  
-
----
-
-## Key Insights
-- Fraud is not dependent on transaction amount alone  
-- Fraud activity varies significantly across time  
-- Combining time and amount gives stronger detection signals  
-- High-risk transactions show ~13% fraud rate vs ~2.5% baseline (~5x increase)  
+### Key Result:
+- High Risk transactions show higher fraud rates compared to baseline  
+- Combining multiple signals improves detection effectiveness  
 
 ---
 
-## Results
-- Low Risk → ~2.5% fraud rate  
-- Medium Risk → ~4.9% fraud rate  
-- High Risk → ~13% fraud rate  
+## 📊 Dashboard
 
-![Risk Score Distribution](images/risk_score_plot.png)
+The Power BI dashboard provides:
 
----
+- Fraud trends over time  
+- Fraud rate by transaction type  
+- Risk category comparison  
+- High-risk transaction identification  
+- Top fraudulent users  
 
-## Business Impact
-- High-risk transactions can be flagged for manual review or OTP verification  
-- Monitoring peak fraud hours improves detection efficiency  
-- Rule-based systems provide quick and interpretable fraud detection  
+![Dashboard Preview](images/dashboard.png)
 
 ---
 
-## Conclusion
-This project demonstrates that strong data analysis and logical rule design can effectively identify fraud patterns without relying on machine learning models.
+## 💡 Key Insights
+
+- Fraud is driven by **behavioral patterns**, not a single feature  
+- Time and transaction type play a critical role in fraud detection  
+- User-level analysis reveals concentrated fraud activity  
+- Combining weak signals creates a stronger fraud detection mechanism  
+
+---
+
+## 📈 Business Impact
+
+- Enables early identification of high-risk transactions  
+- Supports rule-based fraud monitoring systems  
+- Improves decision-making for fraud prevention teams  
+- Provides an interpretable alternative to black-box models  
+
+---
+
+## 🧠 Conclusion
+
+This project demonstrates how structured data analysis and feature engineering can be used to design an effective and interpretable fraud detection system without relying on complex machine learning models.
